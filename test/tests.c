@@ -4696,6 +4696,37 @@ void test_skipping(void **state) {
   teardown_cmp_and_buf(&cmp, &buf);
 }
 
+void test_skip_bytes(void **state) {
+  buf_t buf;
+  cmp_ctx_t cmp;
+  cmp_object_t obj;
+
+  (void)state;
+
+  setup_cmp_and_buf(&cmp, &buf);
+
+  M_BufferEnsureCapacity(&buf, 100);
+
+  /* Write the string marker but omit the string contents. This should ensure
+     that skip_bytes() (and thus cmp_skip_object*) will fail when it tries
+     to skip the string. */
+  assert_true(cmp_write_str_marker(&cmp, 20));
+
+  M_BufferSeek(&buf, 0);
+  assert_false(cmp_skip_object(&cmp, &obj));
+
+  M_BufferSeek(&buf, 0);
+  assert_false(cmp_skip_object_flat(&cmp, &obj));
+
+  M_BufferSeek(&buf, 0);
+  assert_false(cmp_skip_object_no_limit(&cmp));
+
+  M_BufferSeek(&buf, 0);
+  assert_false(cmp_skip_object_limit(&cmp, &obj, 1));
+
+  teardown_cmp_and_buf(&cmp, &buf);
+}
+
 void test_deprecated_limited_skipping(void **state) {
   buf_t buf;
   cmp_ctx_t cmp;
