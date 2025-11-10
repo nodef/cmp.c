@@ -1,0 +1,15 @@
+{
+  "name": "cmp.c",
+  "version": "20.2025.8",
+  "description": "An implementation of the MessagePack serialization format in C / msgpack.org[C]; Charlie Gunyon (2014).",
+  "keywords": ["c", "library", "messagepack", "msgpack", "serialization", "data format"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodef/cmp.c.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nodef/cmp.c/issues"
+  },
+  "homepage": "https://github.com/nodef/cmp.c#readme"
+}

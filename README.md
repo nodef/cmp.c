@@ -2,12 +2,35 @@
 
 [![Build Status](https://travis-ci.org/camgunz/cmp.svg?branch=master)](https://travis-ci.org/camgunz/cmp) [![Coverage Status](https://coveralls.io/repos/github/camgunz/cmp/badge.svg?branch=develop)](https://coveralls.io/github/camgunz/cmp?branch=develop)
 
-CMP is a C implementation of the MessagePack serialization format.  It
+CMP is a C implementation of the MessagePack serialization format,
+by [Charlie Gunyon](https://github.com/camgunz).  It
 currently implements version 5 of the [MessagePack
 Spec](http://github.com/msgpack/msgpack/blob/master/spec.md).
 
 CMP's goal is to be lightweight and straightforward, forcing nothing on the
 programmer.
+
+## Installation
+
+Run:
+```bash
+$ npm i cmp.c
+```
+
+And then include `cmp.h` as follows:
+```c
+#include "node_modules/cmp.c/cmp.h"
+```
+
+You may also want to include `cmp.c` as follows:
+```c
+#ifndef __CMP_C__
+#define __CMP_C__
+#include "node_modules/cmp.c/cmp.c"
+#endif
+```
+
+This will include both the function declaration and their definitions into a single file.
 
 ## License
 
@@ -221,3 +244,10 @@ functionality will be included.  Fair warning: this changes the ABI.
 CMP will honor `WORDS_BIGENDIAN`. If defined to `0` it will convert data
 to/from little-endian format when writing/reading. If defined to `1` it won't.
 If not defined, CMP will check at runtime.
+
+<br>
+<br>
+
+
+[![ORG](https://img.shields.io/badge/org-nodef-green?logo=Org)](https://nodef.github.io)
+![](https://ga-beacon.deno.dev/G-RC63DPBH3P:SH3Eq-NoQ9mwgYeHWxu7cw/github.com/nodef/cmp.c)
